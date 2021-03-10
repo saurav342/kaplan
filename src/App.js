@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import LogoContainer from './component/LogoContainer';
+import BookContainer from './component/BookContainer';
+import SearchComponent from './component/SearchComponent';
+import Header from './component/HeaderContainer';
+
 
 function App() {
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className="sidebar-nav">
+
+      </div>
+
+      <LogoContainer />
+
+      <div className="main-container">
+        <Header />
+        <SearchComponent searchCb={handleSearch} />
+        <BookContainer searchTerm={searchTerm} />
+      </div>
+
+
     </div>
   );
 }
